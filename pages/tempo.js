@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 function Tempo(props) {
   console.log("> Dynamic Frontend < ");
   const dynamicDate = new Date();
@@ -5,9 +7,14 @@ function Tempo(props) {
 
   return (
     <div>
-      <div>{dynamicDateString} Dinâmico</div>
+      <Link href="/">
+        <a>Home</a>
+      </Link>
+      <div>
+        <div>{dynamicDateString} (Dinâmico)</div>
 
-      <div>{props.staticDateString} Estático</div>
+        <div>{props.staticDateString} (Estático)</div>
+      </div>
     </div>
   );
 }
@@ -22,7 +29,7 @@ export function getStaticProps() {
     props: {
       staticDateString,
     },
-    revalidate: 10
+    revalidate: 10,
   };
 }
 
